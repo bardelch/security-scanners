@@ -1,0 +1,6 @@
+[submodule "graudit"]
+	path = graudit
+	url = https://github.com/wireghoul/graudit.git
+[submodule "splint"]
+	path = splint
+	url = https://github.com/splintchecker/splint.git
