@@ -4,3 +4,6 @@
 [submodule "splint"]
 	path = splint
 	url = https://github.com/splintchecker/splint.git
+[submodule "VCG"]
+	path = VCG
+	url = https://github.com/nccgroup/VCG
