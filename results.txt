@@ -57,7 +57,7 @@ test/stack.c:35:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 5
-Lines analyzed = 40 in approximately 0.01 seconds (4605 lines/second)
+Lines analyzed = 40 in approximately 0.01 seconds (4348 lines/second)
 Physical Source Lines of Code (SLOC) = 23
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   1 [5]   0
 Hits@level+ = [0+]   7 [1+]   5 [2+]   5 [3+]   1 [4+]   1 [5+]   0
@@ -142,7 +142,7 @@ test/stack-mod.c:38:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 4
-Lines analyzed = 43 in approximately 0.01 seconds (3457 lines/second)
+Lines analyzed = 43 in approximately 0.01 seconds (5311 lines/second)
 Physical Source Lines of Code (SLOC) = 25
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   0 [5]   0
 Hits@level+ = [0+]   6 [1+]   4 [2+]   4 [3+]   0 [4+]   0 [5+]   0
@@ -152,3 +152,1124 @@ Not every hit is necessarily a security vulnerability.
 There may be other security vulnerabilities; review your code!
 See 'Secure Programming HOWTO'
 (https://dwheeler.com/secure-programs) for more information.
+===========================================================
+                                      .___ __  __   
+          _________________  __ __  __| _/|__|/  |_ 
+         / ___\_` __ \__  \ |  |  \/ __ | | \\_  __\
+        / /_/  >  | \// __ \|  |  / /_/ | |  ||  |  
+        \___  /|__|  (____  /____/\____ | |__||__|  
+       /_____/            \/           \/           
+              grep rough audit - static analysis tool
+                  v2.8 written by @Wireghoul
+=================================[justanotherhacker.com]===
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K53[m[K[36m[K-[m[K *
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K54[m[K[36m[K:[m[K * This product includes [01;31m[Kcrypt[m[Kographic software written by Eric Young
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K55[m[K[36m[K:[m[K * (eay@[01;31m[Kcrypt[m[Ksoft.com).  This product includes software written by Tim
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K56[m[K[36m[K:[m[K * Hudson (tjh@[01;31m[Kcrypt[m[Ksoft.com).
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K57[m[K[36m[K-[m[K *
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K58[m[K[36m[K-[m[K */
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K59[m[K[36m[K:[m[K/* Copyright (C) 1995-1998 Eric Young (eay@[01;31m[Kcrypt[m[Ksoft.com)
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K60[m[K[36m[K-[m[K * All rights reserved.
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K62[m[K[36m[K-[m[K * This package is an SSL implementation written
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K63[m[K[36m[K:[m[K * by Eric Young (eay@[01;31m[Kcrypt[m[Ksoft.com).
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K64[m[K[36m[K-[m[K * The implementation was written so as to conform with Netscapes SSL.
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K70[m[K[36m[K-[m[K * included with this distribution is covered by the same copyright terms
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K71[m[K[36m[K:[m[K * except that the holder is Tim Hudson (tjh@[01;31m[Kcrypt[m[Ksoft.com).
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K72[m[K[36m[K-[m[K * 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K73[m[K[36m[K-[m[K * Copyright remains Eric Young's, and as such any Copyright notices in
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K74[m[K[36m[K:[m[K * the code are not to be [01;31m[Kremove[m[Kd.
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K75[m[K[36m[K-[m[K * If this package is used in a product, Eric Young should be given attribution
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K89[m[K[36m[K-[m[K *    must display the following acknowledgement:
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K90[m[K[36m[K:[m[K *    "This product includes [01;31m[Kcrypt[m[Kographic software written by
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K91[m[K[36m[K:[m[K *     Eric Young (eay@[01;31m[Kcrypt[m[Ksoft.com)"
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K92[m[K[36m[K:[m[K *    The word '[01;31m[Kcrypt[m[Kographic' can be left out if the rouines from the library
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K93[m[K[36m[K:[m[K *    being used are not [01;31m[Kcrypt[m[Kographic related :-).
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K94[m[K[36m[K-[m[K * 4. If you include any Windows specific code (or a derivative thereof) from 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K95[m[K[36m[K-[m[K *    the apps directory (application code) you must include an acknowledgement:
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K96[m[K[36m[K:[m[K *    "This product includes software written by Tim Hudson (tjh@[01;31m[Kcrypt[m[Ksoft.com)"
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K97[m[K[36m[K-[m[K * 
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K149[m[K[36m[K-[m[K			long ii; \
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K150[m[K[36m[K:[m[K			[01;31m[Kprintf([m[K"bitmask: "); for (ii = 0; ii < (msg_len); ii++) \
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K151[m[K[36m[K:[m[K			[01;31m[Kprintf([m[K"%d ", (bitmask[ii >> 3] & (1 << (ii & 7))) >> (ii & 7)); \
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K152[m[K[36m[K:[m[K			[01;31m[Kprintf([m[K"\n"); }
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K153[m[K[36m[K-[m[K#endif
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K192[m[K[36m[K-[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K193[m[K[36m[K:[m[K	/* zero length fragment [01;31m[Kgets[m[K zero frag->fragment */
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K194[m[K[36m[K-[m[K	frag->fragment = buf;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K247[m[K[36m[K-[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K248[m[K[36m[K:[m[K	[01;31m[Kfprintf[m[K(stderr, "using MTU = %d\n", mtu);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K249[m[K[36m[K-[m[K
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K561[m[K[36m[K-[m[K			unsigned char *p = (unsigned char *)s->init_buf->data+DTLS1_HM_HEADER_LENGTH;
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K562[m[K[36m[K:[m[K			[01;31m[Kmemcpy[m[K(&p[frag->msg_header.frag_off],
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K563[m[K[36m[K-[m[K				frag->fragment,frag->msg_header.frag_len);
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K618[m[K[36m[K-[m[K			goto err;
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K619[m[K[36m[K:[m[K		[01;31m[Kmemcpy(&(frag->msg_header), msg_hdr, sizeof([m[K*msg_hdr));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K620[m[K[36m[K-[m[K		frag->msg_header.frag_len = frag->msg_header.msg_len;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K749[m[K[36m[K-[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K750[m[K[36m[K:[m[K		[01;31m[Kmemcpy(&(frag->msg_header), msg_hdr, sizeof([m[K*msg_hdr));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K751[m[K[36m[K-[m[K
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K818[m[K[36m[K-[m[K	/* 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K819[m[K[36m[K:[m[K	 * if this is a future (or stale) message it [01;31m[Kgets[m[K buffered
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K820[m[K[36m[K-[m[K	 * (or dropped)--no further processing at this time
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K923[m[K[36m[K-[m[K		s->s3->tmp.finish_md_len = i;
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K924[m[K[36m[K:[m[K		[01;31m[Kmemcpy[m[K(p, s->s3->tmp.finish_md, i);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K925[m[K[36m[K-[m[K		p+=i;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K933[m[K[36m[K-[m[K		OPENSSL_assert(i <= EVP_MAX_MD_SIZE);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K934[m[K[36m[K:[m[K		[01;31m[Kmemcpy[m[K(s->s3->previous_client_finished, 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K935[m[K[36m[K-[m[K		       s->s3->tmp.finish_md, i);
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K940[m[K[36m[K-[m[K		OPENSSL_assert(i <= EVP_MAX_MD_SIZE);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K941[m[K[36m[K:[m[K		[01;31m[Kmemcpy[m[K(s->s3->previous_server_finished, 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K942[m[K[36m[K-[m[K		       s->s3->tmp.finish_md, i);
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1088[m[K[36m[K-[m[K		{
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1089[m[K[36m[K:[m[K		[01;31m[Kfprintf[m[K( stderr, "invalid state reached %s:%d", __FILE__, __LINE__);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1090[m[K[36m[K-[m[K		return 1;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1155[m[K[36m[K-[m[K			{
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1156[m[K[36m[K:[m[K			[01;31m[Kfprintf[m[K(stderr, "dtls1_retransmit_message() failed\n");
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1157[m[K[36m[K-[m[K			return -1;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1176[m[K[36m[K-[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1177[m[K[36m[K:[m[K	[01;31m[Kmemcpy[m[K(frag->fragment, s->init_buf->data, s->init_num);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1178[m[K[36m[K-[m[K
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1218[m[K[36m[K-[m[K#if 0
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1219[m[K[36m[K:[m[K	[01;31m[Kfprintf[m[K( stderr, "buffered messge: \ttype = %xx\n", msg_buf->type);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1220[m[K[36m[K:[m[K	[01;31m[Kfprintf[m[K( stderr, "\t\t\t\t\tlen = %d\n", msg_buf->len);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1221[m[K[36m[K:[m[K	[01;31m[Kfprintf[m[K( stderr, "\t\t\t\t\tseq_num = %d\n", msg_buf->seq_num);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1222[m[K[36m[K-[m[K#endif
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1253[m[K[36m[K-[m[K		{
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1254[m[K[36m[K:[m[K		[01;31m[Kfprintf[m[K(stderr, "retransmit:  message %d non-existant\n", seq);
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1255[m[K[36m[K-[m[K		*found = 0;
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1266[m[K[36m[K-[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1267[m[K[36m[K:[m[K	[01;31m[Kmemcpy[m[K(s->init_buf->data, frag->fragment, 
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1268[m[K[36m[K-[m[K		frag->msg_header.msg_len + header_length);
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1293[m[K[36m[K-[m[K	{
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1294[m[K[36m[K:[m[K		[01;31m[Kmemcpy(save_write_sequence, s->s3->write_sequence, sizeof([m[Ks->s3->write_sequence));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1295[m[K[36m[K:[m[K		[01;31m[Kmemcpy(s->s3->write_sequence, s->d1->last_write_sequence, sizeof([m[Ks->s3->write_sequence));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1296[m[K[36m[K-[m[K	}
+[36m[K##############################################[m[K
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1309[m[K[36m[K-[m[K	{
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1310[m[K[36m[K:[m[K		[01;31m[Kmemcpy(s->d1->last_write_sequence, s->s3->write_sequence, sizeof([m[Ks->s3->write_sequence));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1311[m[K[36m[K:[m[K		[01;31m[Kmemcpy(s->s3->write_sequence, save_write_sequence, sizeof([m[Ks->s3->write_sequence));
+[35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1312[m[K[36m[K-[m[K	}
+Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
+Examining openssl-0.9.8za/ssl/d1_both.c
+
+FINAL RESULTS:
+
+openssl-0.9.8za/ssl/d1_both.c:562:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:619:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:640:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+openssl-0.9.8za/ssl/d1_both.c:730:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+openssl-0.9.8za/ssl/d1_both.c:750:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:785:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+openssl-0.9.8za/ssl/d1_both.c:924:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:934:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:941:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:1177:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:1239:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+openssl-0.9.8za/ssl/d1_both.c:1267:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:1294:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+openssl-0.9.8za/ssl/d1_both.c:1310:  [2] (buffer) memcpy:
+  Does not check for buffer overflows when copying to destination (CWE-120).
+  Make sure destination can always hold the source data.
+
+ANALYSIS SUMMARY:
+
+Hits = 14
+Lines analyzed = 1433 in approximately 0.04 seconds (38117 lines/second)
+Physical Source Lines of Code (SLOC) = 971
+Hits@level = [0]  10 [1]   0 [2]  14 [3]   0 [4]   0 [5]   0
+Hits@level+ = [0+]  24 [1+]  14 [2+]  14 [3+]   0 [4+]   0 [5+]   0
+Hits/KSLOC@level+ = [0+] 24.7168 [1+] 14.4181 [2+] 14.4181 [3+]   0 [4+]   0 [5+]   0
+Minimum risk level = 1
+Not every hit is necessarily a security vulnerability.
+There may be other security vulnerabilities; review your code!
+See 'Secure Programming HOWTO'
+(https://dwheeler.com/secure-programs) for more information.
+openssl-0.9.8za/e_os.h:437: Include file <unistd.h> matches the name of a POSIX
+    library, but the POSIX library is not being used.  Consider using +posixlib
+    or +posixstrictlib to select the POSIX library, or -warnposix to suppress
+    this message.
+  Header name matches a POSIX header, but the POSIX library is not selected.
+  (Use -warnposixheaders to inhibit warning)
+openssl-0.9.8za/e_os.h:441: Include file <sys/types.h> matches the name of a
+    POSIX library, but the POSIX library is not being used.  Consider using
+    +posixlib or +posixstrictlib to select the POSIX library, or -warnposix to
+    suppress this message.
+< Location unknown >: Field name reused: 
+  Code cannot be parsed.  For help on parse errors, see splint -help
+  parseerrors. (Use -syntax to inhibit warning)
+< Location unknown >: Previous use of 
+openssl-0.9.8za/ssl/ssl_locl.h:1032:22:
+    Function parameter header declared as manifest array (size constant is
+    meaningless)
+  A formal parameter is declared as an array with size.  The size of the array
+  is ignored in this context, since the array formal parameter is treated as a
+  pointer. (Use -fixedformalarray to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:155:48:
+    Initial value of bitmask_start_values[0] is type int, expects unsigned
+    char: 0xff
+  To make char and int types equivalent, use +charint.
+openssl-0.9.8za/ssl/d1_both.c:155:54:
+    Initial value of bitmask_start_values[1] is type int, expects unsigned
+    char: 0xfe
+openssl-0.9.8za/ssl/d1_both.c:155:60:
+    Initial value of bitmask_start_values[2] is type int, expects unsigned
+    char: 0xfc
+openssl-0.9.8za/ssl/d1_both.c:155:66:
+    Initial value of bitmask_start_values[3] is type int, expects unsigned
+    char: 0xf8
+openssl-0.9.8za/ssl/d1_both.c:155:96:
+    Additional initialization errors for bitmask_start_values not reported
+openssl-0.9.8za/ssl/d1_both.c:156:48:
+                                         Initial value of bitmask_end_values[0]
+                                         is type int, expects unsigned char:
+                                         0xff
+openssl-0.9.8za/ssl/d1_both.c:156:54:
+                                         Initial value of bitmask_end_values[1]
+                                         is type int, expects unsigned char:
+                                         0x01
+openssl-0.9.8za/ssl/d1_both.c:156:60:
+                                         Initial value of bitmask_end_values[2]
+                                         is type int, expects unsigned char:
+                                         0x03
+openssl-0.9.8za/ssl/d1_both.c:156:66:
+                                         Initial value of bitmask_end_values[3]
+                                         is type int, expects unsigned char:
+                                         0x07
+openssl-0.9.8za/ssl/d1_both.c:156:96:
+    Additional initialization errors for bitmask_end_values not reported
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_hm_fragment_new)
+openssl-0.9.8za/ssl/d1_both.c:181:10: Null storage returned as non-null: NULL
+  Function returns a possibly null pointer, but is not declared using
+  /*@null@*/ annotation of result.  If function may return NULL, add /*@null@*/
+  annotation to the return value declaration. (Use -nullret to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:183:6: Test expression for if not boolean, type
+                                        unsigned long int: frag_len
+  Test expression type is not boolean or int. (Use -predboolint to inhibit
+  warning)
+openssl-0.9.8za/ssl/d1_both.c:189:11: Null storage returned as non-null: NULL
+openssl-0.9.8za/ssl/d1_both.c:189:16:
+    Fresh storage frag not released before return
+  A memory leak has been detected. Storage allocated locally is not released
+  before the last reference to it is lost. (Use -mustfreefresh to inhibit
+  warning)
+   openssl-0.9.8za/ssl/d1_both.c:179:2: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:194:2: Implicitly only storage frag->fragment
+    (type unsigned char *) not released before assignment: frag->fragment = buf
+  A memory leak has been detected. Only-qualified storage is not released
+  before the last reference to it is lost. (Use -mustfreeonly to inhibit
+  warning)
+openssl-0.9.8za/ssl/d1_both.c:197:6: Test expression for if not boolean, type
+                                        int: reassembly
+openssl-0.9.8za/ssl/d1_both.c:204:11: Null storage returned as non-null: NULL
+openssl-0.9.8za/ssl/d1_both.c:204:16:
+    Fresh storage frag not released before return
+   openssl-0.9.8za/ssl/d1_both.c:179:2: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:206:22:
+    Function memset expects arg 3 to be size_t gets unsigned long int:
+    (((frag_len) + 7) / 8)
+  To allow arbitrary integral types to match long unsigned, use
+  +longunsignedintegral.
+openssl-0.9.8za/ssl/d1_both.c:209:2: Implicitly only storage frag->reassembly
+    (type unsigned char *) not released before assignment:
+    frag->reassembly = bitmask
+openssl-0.9.8za/ssl/d1_both.c:211:9: Possibly null storage frag->fragment
+                                        derivable from return value: frag
+   openssl-0.9.8za/ssl/d1_both.c:194:19: Storage frag->fragment may become null
+openssl-0.9.8za/ssl/d1_both.c:211:9: Possibly null storage frag->reassembly
+                                        derivable from return value: frag
+   openssl-0.9.8za/ssl/d1_both.c:209:21:
+   Storage frag->reassembly may become null
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_do_write)
+openssl-0.9.8za/ssl/d1_both.c:230:58: Null storage passed as non-null param:
+                                         SSL_ctrl (..., NULL)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:230:39: Operand of ! is non-boolean (long int):
+    !(SSL_ctrl((s), 32, 0, NULL) & 0x00001000L)
+  The operand of a boolean operator is not a boolean. Use +ptrnegate to allow !
+  to be used on pointers. (Use -boolops to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:233:13:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:233:37: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:232:3: Assignment of long int to unsigned int:
+    s->d1->mtu = BIO_ctrl(SSL_get_wbio(s), 40, 0, NULL)
+  To ignore signs in type comparisons use +ignoresigns
+openssl-0.9.8za/ssl/d1_both.c:242:5: Function BIO_ctrl expects arg 3 to be long
+                                        int gets unsigned int: s->d1->mtu
+openssl-0.9.8za/ssl/d1_both.c:241:13:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:242:17: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:241:4: Return value (type long int) ignored:
+                                        BIO_ctrl(SSL_get...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:275:3: Assignment of int to unsigned int:
+                                        mac_size = EVP_MD_size(s->write_hash)
+openssl-0.9.8za/ssl/d1_both.c:279:6: Operands of && are non-booleans
+    (EVP_CIPHER_CTX *, unsigned long int):
+    s->enc_write_ctx && ((EVP_CIPHER_flags(s->enc_write_ctx->cipher) & 0x7) &
+    0x2)
+openssl-0.9.8za/ssl/d1_both.c:281:3: Assignment of int to unsigned int:
+    blocksize = 2 * EVP_CIPHER_block_size(s->enc_write_ctx->cipher)
+openssl-0.9.8za/ssl/d1_both.c:286:9: Test expression for while not boolean,
+                                        type int: s->init_num
+openssl-0.9.8za/ssl/d1_both.c:288:54:
+                                         Possibly null storage s->write_hash
+                                         derivable from parameter SSL_get_wbio
+                                         (s)
+  A possibly null pointer is reachable from a parameter or global variable that
+  is not declared using a /*@null@*/ annotation. (Use -nullstate to inhibit
+  warning)
+openssl-0.9.8za/ssl/d1_both.c:288:54:
+                                         Possibly null storage s->enc_write_ctx
+                                         derivable from parameter SSL_get_wbio
+                                         (s)
+openssl-0.9.8za/ssl/d1_both.c:288:41:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:288:62: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:288:3: Assignment of unsigned int to int:
+    curr_mtu = s->d1->mtu - (int)BIO_ctrl(SSL_get_wbio(s), 13, 0, NULL) - 13 -
+    mac_size - blocksize
+openssl-0.9.8za/ssl/d1_both.c:294:24:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:294:45: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:297:4: Assignment of unsigned int to int:
+    curr_mtu = s->d1->mtu - 13 - mac_size - blocksize
+openssl-0.9.8za/ssl/d1_both.c:302:4: Assignment of int to unsigned int:
+                                        len = curr_mtu
+openssl-0.9.8za/ssl/d1_both.c:304:4: Assignment of int to unsigned int:
+                                        len = s->init_num
+openssl-0.9.8za/ssl/d1_both.c:317:6: Assignment of int to unsigned int:
+                                        len = curr_mtu
+openssl-0.9.8za/ssl/d1_both.c:319:6: Assignment of int to unsigned int:
+                                        len = s->init_num
+openssl-0.9.8za/ssl/d1_both.c:325:4: Return value (type unsigned char *)
+                                        ignored: dtls1_write_mess...
+openssl-0.9.8za/ssl/d1_both.c:331:4: Function dtls1_write_bytes expects arg 4
+                                        to be int gets unsigned int: len
+openssl-0.9.8za/ssl/d1_both.c:340:18:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:341:12: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:342:27:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:343:13: Null storage passed as non-null param:
+                                         BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:342:5: Assignment of long int to unsigned int:
+    s->d1->mtu = BIO_ctrl(SSL_get_wbio(s), 40, 0, NULL)
+openssl-0.9.8za/ssl/d1_both.c:354:24:
+    Operand of ! is non-boolean (unsigned int): !s->d1->retransmitting
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_get_message)
+openssl-0.9.8za/ssl/d1_both.c:418:6: Test expression for if not boolean, type
+                                        int: s->s3->tmp.reuse_message
+openssl-0.9.8za/ssl/d1_both.c:428:3: Implicitly only storage s->init_msg (type
+    void *) not released before assignment:
+    s->init_msg = s->init_buf->data + 12
+openssl-0.9.8za/ssl/d1_both.c:428:3: Dependent storage s->init_buf->data
+    assigned to implicitly only: s->init_msg = s->init_buf->data + 12
+  Dependent storage is transferred to a non-dependent reference. (Use
+  -dependenttrans to inhibit warning)
+   openssl-0.9.8za/ssl/d1_both.c:428:17:
+   Storage s->init_buf->data becomes dependent
+openssl-0.9.8za/ssl/d1_both.c:430:22:
+    Storage s->init_buf->data reachable from parameter is kept (should be
+    implicitly only)
+  Storage derivable from a parameter does not match the alias kind expected for
+  the formal parameter. (Use -compmempass to inhibit warning)
+   openssl-0.9.8za/ssl/d1_both.c:428:3: Storage s->init_buf->data becomes kept
+openssl-0.9.8za/ssl/d1_both.c:437:2: Assignment of long int to int:
+    i = dtls1_get_message_fragment(s, st1, stn, max, ok)
+  To ignore type qualifiers in type comparisons use +ignorequals.
+openssl-0.9.8za/ssl/d1_both.c:441:23: Operand of ! is non-boolean (int): !*ok
+openssl-0.9.8za/ssl/d1_both.c:458:24:
+                                         Function ssl3_finish_mac expects arg 3
+                                         to be int gets unsigned long int:
+                                         msg_len
+openssl-0.9.8za/ssl/d1_both.c:461:7: Function  expects arg 5 to be size_t gets
+                                        unsigned long int: msg_len
+openssl-0.9.8za/ssl/d1_both.c:467:7: Operand of ! is non-boolean (unsigned
+                                        int): !s->d1->listen
+openssl-0.9.8za/ssl/d1_both.c:470:2: Implicitly only storage s->init_msg (type
+    void *) not released before assignment:
+    s->init_msg = s->init_buf->data + 12
+openssl-0.9.8za/ssl/d1_both.c:471:21:
+    Storage s->init_buf->data reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:470:2: Storage s->init_buf->data becomes kept
+openssl-0.9.8za/ssl/d1_both.c:474:18:
+    Possibly null storage s->msg_callback derivable from parameter
+    ssl3_send_alert (s, ...)
+openssl-0.9.8za/ssl/d1_both.c:474:18:
+    Storage s->init_msg reachable from passed parameter is kept (should be
+    implicitly only): s
+   openssl-0.9.8za/ssl/d1_both.c:470:2: Storage s->init_msg becomes kept
+openssl-0.9.8za/ssl/d1_both.c:474:22: Variable al used before definition
+  An rvalue is used that may not be initialized to a value on some execution
+  path. (Use -usedef to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:474:2: Return value (type int) ignored:
+                                        ssl3_send_alert(...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:476:12:
+    Storage s->init_buf->data reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:470:2: Storage s->init_buf->data becomes kept
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_preprocess_fragment)
+openssl-0.9.8za/ssl/d1_both.c:484:2: Assignment of unsigned long int to size_t:
+                                        msg_len = msg_hdr->msg_len
+openssl-0.9.8za/ssl/d1_both.c:485:2: Assignment of unsigned long int to size_t:
+                                        frag_off = msg_hdr->frag_off
+openssl-0.9.8za/ssl/d1_both.c:486:2: Assignment of unsigned long int to size_t:
+                                        frag_len = msg_hdr->frag_len
+openssl-0.9.8za/ssl/d1_both.c:495:7: Operands of > have incompatible types
+    (arbitrary unsigned integral type, unsigned long int):
+    (frag_off + frag_len) > (unsigned long int)max
+openssl-0.9.8za/ssl/d1_both.c:505:8: Operand of ! is non-boolean (int):
+    !BUF_MEM_grow_clean(s->init_buf, (int)msg_len + 12)
+openssl-0.9.8za/ssl/d1_both.c:511:3: Assignment of size_t to unsigned long int:
+                                        s->s3->tmp.message_size = msg_len
+openssl-0.9.8za/ssl/d1_both.c:512:3: Assignment of size_t to unsigned long int:
+                                        s->d1->r_msg_hdr.msg_len = msg_len
+openssl-0.9.8za/ssl/d1_both.c:513:3: Assignment of unsigned char to int:
+                                        s->s3->tmp.message_type = msg_hdr->type
+openssl-0.9.8za/ssl/d1_both.c:517:11:
+    Operands of != have incompatible types (size_t, unsigned long int):
+    msg_len != s->d1->r_msg_hdr.msg_len
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_retrieve_buffered_fragment)
+openssl-0.9.8za/ssl/d1_both.c:550:12:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:542:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:555:3: Return value (type pitem *) ignored:
+                                        pqueue_pop(s->d1...
+openssl-0.9.8za/ssl/d1_both.c:557:52:
+                                         Function dtls1_preprocess_fragment
+                                         expects arg 3 to be int gets long int:
+                                         max
+openssl-0.9.8za/ssl/d1_both.c:563:20:
+    Function memcpy expects arg 3 to be size_t gets unsigned long int:
+    frag->msg_header.frag_len
+openssl-0.9.8za/ssl/d1_both.c:566:26:
+    Null storage frag->reassembly derivable from parameter dtls1_hm_fragment_fre
+    e (frag)
+openssl-0.9.8za/ssl/d1_both.c:572:11:
+                                         Return value type unsigned long int
+                                         does not match declared type int:
+                                         frag_len
+openssl-0.9.8za/ssl/d1_both.c:575:3: Return value (type int) ignored:
+                                        ssl3_send_alert(...
+openssl-0.9.8za/ssl/d1_both.c:578:13:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:542:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:581:12:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:542:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_reassemble_fragment)
+openssl-0.9.8za/ssl/d1_both.c:601:3: Assignment of long int to unsigned long
+                                        int: max_len = s->max_cert_list
+openssl-0.9.8za/ssl/d1_both.c:609:10:
+    Passed storage seq64 contains 5 undefined fields: d, top, dmax, neg, flags
+  Storage derivable from a parameter, return value or global is not defined.
+  Use /*@out@*/ to denote passed or returned storage which need not be defined.
+  (Use -compdef to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:610:2: Return value (type int) ignored:
+                                        BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:628:4: Fresh storage item (type pitem *) not
+                                        released before assignment: item = NULL
+   openssl-0.9.8za/ssl/d1_both.c:611:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:632:3: Clauses exit with frag referencing fresh
+    storage in true branch, local storage in false branch
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   openssl-0.9.8za/ssl/d1_both.c:616:3: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:642:10:
+    Test expression for while not boolean, type unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:646:5: Operands of > have incompatible types
+    (unsigned long int, size_t): frag_len > sizeof((devnull))
+openssl-0.9.8za/ssl/d1_both.c:646:36: Conditional clauses are not of same type:
+    sizeof((devnull)) (size_t), frag_len (unsigned long int)
+openssl-0.9.8za/ssl/d1_both.c:645:5: Passed storage devnull not completely
+    defined (*devnull is undefined): s->method->ssl_read_bytes (..., devnull,
+    ...)
+openssl-0.9.8za/ssl/d1_both.c:650:14:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+  A storage leak due to incomplete deallocation of a structure or deep pointer
+  is suspected. Unshared storage that is reachable from a reference that is
+  being deallocated has not yet been deallocated. Splint assumes when an object
+  is passed as an out only void pointer that the outer object will be
+  deallocated, but the inner objects will not. (Use -compdestroy to inhibit
+  warning)
+openssl-0.9.8za/ssl/d1_both.c:655:38:
+    Function  expects arg 4 to be int gets unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:661:85:
+    Left operand of >> may be negative (long int): (ii) >> 3
+  The left operand to a shift operator may be negative (behavior is
+  implementation-defined). (Use -shiftimplementation to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:661:106:
+    Right operand of << may be negative (long int): 1 << ((ii) & 7)
+  The right operand to a shift operator may be negative (behavior undefined).
+  (Use -shiftnegative to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:661:166:
+    Left operand of >> may be negative (long int):
+    ((long int)msg_hdr->frag_off) >> 3
+openssl-0.9.8za/ssl/d1_both.c:661:275:
+    Left operand of >> may be negative (long int):
+    ((long int)msg_hdr->frag_off) >> 3
+openssl-0.9.8za/ssl/d1_both.c:661:320:
+    Left operand of >> may be negative (long int):
+    ((((long int)(msg_hdr->frag_off + frag_len)) - 1)) >> 3
+openssl-0.9.8za/ssl/d1_both.c:662:79: Assignment of int to unsigned char:
+                                         frag->reassembly[ii] = 0xff
+openssl-0.9.8za/ssl/d1_both.c:662:130:
+    Left operand of >> may be negative (long int):
+    (((long int)(msg_hdr->frag_off + frag_len)) - 1) >> 3
+openssl-0.9.8za/ssl/d1_both.c:663:71:
+    Left operand of >> may be negative (long int):
+    (((long int)msg_hdr->msg_len) - 1) >> 3
+openssl-0.9.8za/ssl/d1_both.c:665:29:
+    Test expression for if not boolean, type int: is_complete
+openssl-0.9.8za/ssl/d1_both.c:665:53:
+    Left operand of >> may be negative (long int):
+    (((long int)msg_hdr->msg_len) - 1) >> 3
+openssl-0.9.8za/ssl/d1_both.c:665:120:
+    Operands of != have incompatible types (unsigned char, int):
+    frag->reassembly[ii] != 0xff
+openssl-0.9.8za/ssl/d1_both.c:665:6: Test expression for if not boolean, type
+                                        int: is_complete
+openssl-0.9.8za/ssl/d1_both.c:668:3: Implicitly only storage frag->reassembly
+    (type unsigned char *) not released before assignment:
+    frag->reassembly = NULL
+openssl-0.9.8za/ssl/d1_both.c:674:3: Return value (type int) ignored:
+                                        BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:684:3: Return value (type pitem *) ignored:
+                                        pqueue_insert(s-...
+openssl-0.9.8za/ssl/d1_both.c:687:13:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:611:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:687:13:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:690:43:
+    Possibly null storage frag->reassembly derivable from parameter
+    dtls1_hm_fragment_free (frag)
+   openssl-0.9.8za/ssl/d1_both.c:668:22:
+   Storage frag->reassembly may become null
+openssl-0.9.8za/ssl/d1_both.c:693:11:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:611:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:693:11:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_process_out_of_seq_message)
+openssl-0.9.8za/ssl/d1_both.c:710:10:
+    Passed storage seq64 contains 5 undefined fields: d, top, dmax, neg, flags
+openssl-0.9.8za/ssl/d1_both.c:711:2: Return value (type int) ignored:
+                                        BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:719:3: Fresh storage item (type pitem *) not
+                                        released before assignment: item = NULL
+   openssl-0.9.8za/ssl/d1_both.c:712:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:728:38:
+                                         Operands of == have incompatible types
+                                         (unsigned char, int): msg_hdr->type ==
+                                         20
+openssl-0.9.8za/ssl/d1_both.c:732:10:
+    Test expression for while not boolean, type unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:736:5: Operands of > have incompatible types
+    (unsigned long int, size_t): frag_len > sizeof((devnull))
+openssl-0.9.8za/ssl/d1_both.c:736:36: Conditional clauses are not of same type:
+    sizeof((devnull)) (size_t), frag_len (unsigned long int)
+openssl-0.9.8za/ssl/d1_both.c:735:5: Passed storage devnull not completely
+    defined (*devnull is undefined): s->method->ssl_read_bytes (..., devnull,
+    ...)
+openssl-0.9.8za/ssl/d1_both.c:743:7: Left operand of && is non-boolean
+    (unsigned long int): frag_len && frag_len < msg_hdr->msg_len
+openssl-0.9.8za/ssl/d1_both.c:744:53:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:752:7: Test expression for if not boolean, type
+                                        unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:756:20:
+    Function  expects arg 4 to be int gets unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:762:3: Return value (type int) ignored:
+                                        BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:769:3: Return value (type pitem *) ignored:
+                                        pqueue_insert(s-...
+openssl-0.9.8za/ssl/d1_both.c:772:13:
+    Fresh storage frag not released before return
+   openssl-0.9.8za/ssl/d1_both.c:746:3: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:772:13:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:764:3: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:772:13:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:778:11:
+    Fresh storage frag not released before return
+   openssl-0.9.8za/ssl/d1_both.c:746:3: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:778:11:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:764:3: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:778:11:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_get_message_fragment)
+openssl-0.9.8za/ssl/d1_both.c:792:7: Assignment of int to unsigned long int:
+    frag_len = dtls1_retrieve_buffered_fragment(s, max, ok)
+openssl-0.9.8za/ssl/d1_both.c:792:6: Operands of || are non-booleans (unsigned
+    long int, int): (frag_len = dtls1_retrieve_buffered_fragment(s, max, ok))
+    || *ok
+openssl-0.9.8za/ssl/d1_both.c:794:7: Test expression for if not boolean, type
+                                        int: *ok
+openssl-0.9.8za/ssl/d1_both.c:794:12: Assignment of unsigned long int to int:
+                                         s->init_num = frag_len
+openssl-0.9.8za/ssl/d1_both.c:795:10:
+    Return value type unsigned long int does not match declared type long int:
+    frag_len
+openssl-0.9.8za/ssl/d1_both.c:799:35:
+    Passed storage wire not completely defined (*wire is undefined):
+    s->method->ssl_read_bytes (..., wire, ...)
+openssl-0.9.8za/ssl/d1_both.c:816:33:
+    Passed storage msg_hdr.saved_retransmit_state contains 5 undefined fields:
+    enc_write_ctx, write_hash, compress, session, epoch
+openssl-0.9.8za/ssl/d1_both.c:816:33:
+    Passed storage msg_hdr contains 6 undefined fields:
+    type, msg_len, seq, frag_off, ...
+openssl-0.9.8za/ssl/d1_both.c:824:52:
+    Left operand of && is non-boolean (unsigned int):
+    s->d1->listen && msg_hdr.seq == 1
+openssl-0.9.8za/ssl/d1_both.c:825:60:
+    Only storage msg_hdr.saved_retransmit_state.enc_write_ctx (type
+    EVP_CIPHER_CTX *) derived from variable declared in this scope is not
+    released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:825:60:
+    Only storage msg_hdr.saved_retransmit_state.write_hash (type EVP_MD *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:825:60:
+    Only storage msg_hdr.saved_retransmit_state.compress (type COMP_CTX *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:825:60:
+    Only storage msg_hdr.saved_retransmit_state.session (type SSL_SESSION *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:831:6: Left operand of && is non-boolean
+    (unsigned long int): frag_len && frag_len < len
+openssl-0.9.8za/ssl/d1_both.c:832:53:
+    Only storage msg_hdr.saved_retransmit_state.enc_write_ctx (type
+    EVP_CIPHER_CTX *) derived from variable declared in this scope is not
+    released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:832:53:
+    Only storage msg_hdr.saved_retransmit_state.write_hash (type EVP_MD *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:832:53:
+    Only storage msg_hdr.saved_retransmit_state.compress (type COMP_CTX *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:832:53:
+    Only storage msg_hdr.saved_retransmit_state.session (type SSL_SESSION *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:834:7: Operand of ! is non-boolean (int):
+                                        !s->server
+openssl-0.9.8za/ssl/d1_both.c:835:3: Operands of == have incompatible types
+                                        (unsigned char, int): wire[0] == 0
+  Types are incompatible. (Use -type to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c:841:7: Operands of == have incompatible types
+                                        (unsigned char, int): wire[1] == 0
+openssl-0.9.8za/ssl/d1_both.c:841:23:
+    Operands of == have incompatible types (unsigned char, int): wire[2] == 0
+openssl-0.9.8za/ssl/d1_both.c:841:39:
+    Operands of == have incompatible types (unsigned char, int): wire[3] == 0
+openssl-0.9.8za/ssl/d1_both.c:859:47:
+                                         Function dtls1_preprocess_fragment
+                                         expects arg 3 to be int gets long int:
+                                         max
+openssl-0.9.8za/ssl/d1_both.c:859:6: Test expression for if not boolean, type
+    int: (al = dtls1_preprocess_fragment(s, &msg_hdr, max))
+openssl-0.9.8za/ssl/d1_both.c:870:17:
+    Function  expects arg 4 to be int gets unsigned long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:876:13:
+    Only storage msg_hdr.saved_retransmit_state.enc_write_ctx (type
+    EVP_CIPHER_CTX *) derived from variable declared in this scope is not
+    released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:876:13:
+    Only storage msg_hdr.saved_retransmit_state.write_hash (type EVP_MD *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:876:13:
+    Only storage msg_hdr.saved_retransmit_state.compress (type COMP_CTX *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:876:13:
+    Only storage msg_hdr.saved_retransmit_state.session (type SSL_SESSION *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:897:2: Assignment of unsigned long int to int:
+                                        s->init_num = frag_len
+openssl-0.9.8za/ssl/d1_both.c:898:9: Return value type unsigned long int does
+    not match declared type long int: frag_len
+openssl-0.9.8za/ssl/d1_both.c:898:18:
+    Only storage msg_hdr.saved_retransmit_state.enc_write_ctx (type
+    EVP_CIPHER_CTX *) derived from variable declared in this scope is not
+    released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:898:18:
+    Only storage msg_hdr.saved_retransmit_state.write_hash (type EVP_MD *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:898:18:
+    Only storage msg_hdr.saved_retransmit_state.compress (type COMP_CTX *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:898:18:
+    Only storage msg_hdr.saved_retransmit_state.session (type SSL_SESSION *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:901:2: Return value (type int) ignored:
+                                        ssl3_send_alert(...
+openssl-0.9.8za/ssl/d1_both.c:905:13:
+    Only storage msg_hdr.saved_retransmit_state.enc_write_ctx (type
+    EVP_CIPHER_CTX *) derived from variable declared in this scope is not
+    released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:905:13:
+    Only storage msg_hdr.saved_retransmit_state.write_hash (type EVP_MD *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:905:13:
+    Only storage msg_hdr.saved_retransmit_state.compress (type COMP_CTX *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:905:13:
+    Only storage msg_hdr.saved_retransmit_state.session (type SSL_SESSION *)
+    derived from variable declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:783:40: Parameter st1 not used
+  A function parameter is not used in the body of the function. If the argument
+  is needed for type compatibility or future plans, use /*@unused@*/ in the
+  argument declaration. (Use -paramuse to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_send_finished)
+openssl-0.9.8za/ssl/d1_both.c:924:35:
+    Function memcpy expects arg 3 to be size_t gets int: i
+  To allow arbitrary integral types to match any integral type, use
+  +matchanyintegral.
+openssl-0.9.8za/ssl/d1_both.c:926:3: Assignment of int to unsigned long int:
+                                        l = i
+openssl-0.9.8za/ssl/d1_both.c:935:32:
+    Function memcpy expects arg 3 to be size_t gets int: i
+openssl-0.9.8za/ssl/d1_both.c:936:3: Assignment of int to unsigned char:
+                                        s->s3->previous_client_finished_len = i
+openssl-0.9.8za/ssl/d1_both.c:942:32:
+    Function memcpy expects arg 3 to be size_t gets int: i
+openssl-0.9.8za/ssl/d1_both.c:943:3: Assignment of int to unsigned char:
+                                        s->s3->previous_server_finished_len = i
+openssl-0.9.8za/ssl/d1_both.c:953:38:
+                                         Function dtls1_set_message_header
+                                         expects arg 3 to be unsigned char gets
+                                         int: 20
+openssl-0.9.8za/ssl/d1_both.c:958:3: Return value (type int) ignored:
+                                        dtls1_buffer_mes...
+openssl-0.9.8za/ssl/d1_both.c:964:31:
+    Fresh storage d not released before return
+   openssl-0.9.8za/ssl/d1_both.c:953:3: Fresh storage d created
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_send_change_cipher_spec)
+openssl-0.9.8za/ssl/d1_both.c:982:3: Assignment of int to unsigned char:
+                                        *p++ = 1
+openssl-0.9.8za/ssl/d1_both.c:995:35:
+    Function dtls1_set_message_header_int expects arg 2 to be unsigned char
+    gets int: 1
+openssl-0.9.8za/ssl/d1_both.c:999:3: Return value (type int) ignored:
+                                        dtls1_buffer_mes...
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_add_cert_to_buf)
+openssl-0.9.8za/ssl/d1_both.c:1013:16: Null storage passed as non-null param:
+                                          i2d_X509 (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:1014:8: Operand of ! is non-boolean (int):
+    !BUF_MEM_grow_clean(buf, (int)(n + (*l) + 3))
+openssl-0.9.8za/ssl/d1_both.c:1020:27:
+    Left operand of >> may be negative (int): (n) >> 16
+openssl-0.9.8za/ssl/d1_both.c:1020:70:
+    Left operand of >> may be negative (int): (n) >> 8
+openssl-0.9.8za/ssl/d1_both.c:1021:3: Return value (type int) ignored:
+                                         i2d_X509(x, &p)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_output_cert_chain)
+openssl-0.9.8za/ssl/d1_both.c:1035:7: Operand of ! is non-boolean (int):
+                                         !BUF_MEM_grow_clean(buf, 10)
+openssl-0.9.8za/ssl/d1_both.c:1044:28:
+    Passed storage xs_ctx.ex_data contains 2 undefined fields: sk, dummy
+openssl-0.9.8za/ssl/d1_both.c:1044:28:
+    Passed storage xs_ctx contains 27 undefined fields:
+    ctx, current_method, cert, untrusted, ...
+openssl-0.9.8za/ssl/d1_both.c:1044:57: Null storage passed as non-null param:
+                                          X509_STORE_CTX_init (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:1044:8: Operand of ! is non-boolean (int):
+    !X509_STORE_CTX_init(&xs_ctx, s->ctx->cert_store, x, NULL)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.ctx (type X509_STORE *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.cert (type X509 *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.untrusted (type STACK *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.crls (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.param (type X509_VERIFY_PARAM *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.other_ctx (type void *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.chain (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.tree (type X509_POLICY_TREE *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.current_cert (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.current_issuer (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.current_crl (type X509_CRL *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1047:16:
+    Only storage xs_ctx.ex_data.sk (type STACK *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1050:3: Return value (type int) ignored:
+                                         X509_verify_cert...
+openssl-0.9.8za/ssl/d1_both.c:1057:9: Operand of ! is non-boolean (int):
+                                         !dtls1_add_cert_to_buf(buf, &l, x)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.ctx (type X509_STORE *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.cert (type X509 *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.untrusted (type STACK *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.crls (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.param (type X509_VERIFY_PARAM *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.other_ctx (type void *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.chain (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.tree (type X509_POLICY_TREE *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.current_cert (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.current_issuer (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.current_crl (type X509_CRL *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Only storage xs_ctx.ex_data.sk (type STACK *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1060:14:
+    Fresh storage x not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1055:4: Fresh storage x created
+openssl-0.9.8za/ssl/d1_both.c:1062:6:
+    Clauses exit with x referencing fresh storage in for body, implicitly temp
+    storage if for loop body does not execute
+   openssl-0.9.8za/ssl/d1_both.c:1055:4: Fresh storage x created
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.ctx (type X509_STORE *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.cert (type X509 *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.untrusted (type STACK *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.crls (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.param (type X509_VERIFY_PARAM *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.other_ctx (type void *) derived from variable declared
+    in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.chain (type STACK *) derived from variable declared in
+    this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.tree (type X509_POLICY_TREE *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.current_cert (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.current_issuer (type X509 *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.current_crl (type X509_CRL *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1064:6:
+    Only storage xs_ctx.ex_data.sk (type STACK *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1069:8: Operand of ! is non-boolean (int):
+                                         !dtls1_add_cert_to_buf(buf, &l, x)
+openssl-0.9.8za/ssl/d1_both.c:1070:13:
+    Fresh storage x not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1068:3: Fresh storage x created
+openssl-0.9.8za/ssl/d1_both.c:1079:37:
+    Function dtls1_set_message_header expects arg 3 to be unsigned char gets
+    int: 11
+openssl-0.9.8za/ssl/d1_both.c:1082:12:
+    Fresh storage p not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1079:2: Fresh storage p created
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_read_failed)
+openssl-0.9.8za/ssl/d1_both.c:1093:7: Operand of ! is non-boolean (int):
+                                         !dtls1_is_timer_expired(s)
+openssl-0.9.8za/ssl/d1_both.c:1100:9: Operand of ! is non-boolean (int):
+                                         !(SSL_state(s) & (0x1000 | 0x2000))
+openssl-0.9.8za/ssl/d1_both.c:1102:17:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_rbio(s)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_retransmit_buffered_messages)
+openssl-0.9.8za/ssl/d1_both.c:1153:68:
+    Function dtls1_get_queue_priority expects arg 2 to be int gets unsigned
+    int: frag->msg_header.is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1154:24:
+    Right operand of && is non-boolean (int):
+    dtls1_retransmit_message(s, (unsigned short int)dtls1_get_queue_priority(fra
+    g->msg_header.seq, frag->msg_header.is_ccs), 0, &found) <= 0 && found
+openssl-0.9.8za/ssl/d1_both.c:1157:14:
+    Fresh storage iter not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1147:2: Fresh storage iter created
+openssl-0.9.8za/ssl/d1_both.c:1149:49:
+    Fresh storage item (type pitem *) not released before assignment (in post
+    loop increment): item = pqueue_next(&iter)
+   openssl-0.9.8za/ssl/d1_both.c:1149:8: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:1161:11:
+    Fresh storage iter not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1147:2: Fresh storage iter created
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_buffer_message)
+openssl-0.9.8za/ssl/d1_both.c:1175:31:
+    Function dtls1_hm_fragment_new expects arg 1 to be unsigned long int gets
+    int: s->init_num
+openssl-0.9.8za/ssl/d1_both.c:1177:44:
+    Function memcpy expects arg 3 to be size_t gets int: s->init_num
+openssl-0.9.8za/ssl/d1_both.c:1179:7:
+    Test expression for if not boolean, type int: is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1195:2: Assignment of int to unsigned int:
+                                         frag->msg_header.is_ccs = is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1198:2:
+    Implicitly only storage frag->msg_header.saved_retransmit_state.enc_write_ct
+    x (type EVP_CIPHER_CTX *) not released before assignment:
+    frag->msg_header.saved_retransmit_state.enc_write_ctx = s->enc_write_ctx
+openssl-0.9.8za/ssl/d1_both.c:1199:2:
+    Implicitly only storage frag->msg_header.saved_retransmit_state.write_hash
+    (type EVP_MD *) not released before assignment:
+    frag->msg_header.saved_retransmit_state.write_hash = s->write_hash
+openssl-0.9.8za/ssl/d1_both.c:1200:2:
+    Implicitly only storage frag->msg_header.saved_retransmit_state.compress
+    (type COMP_CTX *) not released before assignment:
+    frag->msg_header.saved_retransmit_state.compress = s->compress
+openssl-0.9.8za/ssl/d1_both.c:1201:2:
+    Implicitly only storage frag->msg_header.saved_retransmit_state.session
+    (type SSL_SESSION *) not released before assignment:
+    frag->msg_header.saved_retransmit_state.session = s->session
+openssl-0.9.8za/ssl/d1_both.c:1204:10:
+    Passed storage seq64 contains 5 undefined fields: d, top, dmax, neg, flags
+openssl-0.9.8za/ssl/d1_both.c:1208:15:
+    Function dtls1_get_queue_priority expects arg 2 to be int gets unsigned
+    int: frag->msg_header.is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1207:8:
+    Function BN_set_word expects arg 2 to be unsigned long int gets int:
+    dtls1_get_queue_priority(frag->msg_header.seq, frag->msg_header.is_ccs)
+openssl-0.9.8za/ssl/d1_both.c:1206:2: Return value (type int) ignored:
+                                         BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Fresh storage frag not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1175:2: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Storage s->enc_write_ctx reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:1198:2: Storage s->enc_write_ctx becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Storage s->write_hash reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:1199:2: Storage s->write_hash becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Storage s->compress reachable from parameter is kept (should be implicitly
+    only)
+   openssl-0.9.8za/ssl/d1_both.c:1200:2: Storage s->compress becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1215:12:
+    Storage s->session reachable from parameter is kept (should be implicitly
+    only)
+   openssl-0.9.8za/ssl/d1_both.c:1201:2: Storage s->session becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1224:2: Return value (type pitem *) ignored:
+                                         pqueue_insert(s-...
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1210:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Fresh storage frag not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1175:2: Fresh storage frag created
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Storage s->enc_write_ctx reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:1198:2: Storage s->enc_write_ctx becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Storage s->write_hash reachable from parameter is kept (should be
+    implicitly only)
+   openssl-0.9.8za/ssl/d1_both.c:1199:2: Storage s->write_hash becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Storage s->compress reachable from parameter is kept (should be implicitly
+    only)
+   openssl-0.9.8za/ssl/d1_both.c:1200:2: Storage s->compress becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1225:11:
+    Storage s->session reachable from parameter is kept (should be implicitly
+    only)
+   openssl-0.9.8za/ssl/d1_both.c:1201:2: Storage s->session becomes kept
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_retransmit_message)
+openssl-0.9.8za/ssl/d1_both.c:1247:10:
+    Passed storage seq64 contains 5 undefined fields: d, top, dmax, neg, flags
+openssl-0.9.8za/ssl/d1_both.c:1248:2: Return value (type int) ignored:
+                                         BN_set_word(&seq...
+openssl-0.9.8za/ssl/d1_both.c:1254:61:
+    Format argument 1 to fprintf (%d) expects int gets unsigned short int: seq
+   openssl-0.9.8za/ssl/d1_both.c:1254:42: Corresponding format code
+openssl-0.9.8za/ssl/d1_both.c:1256:12:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1262:7:
+                                         Test expression for if not boolean,
+                                         type unsigned int:
+                                         frag->msg_header.is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1268:3:
+    Function memcpy expects arg 3 to be size_t gets unsigned long int:
+    frag->msg_header.msg_len + header_length
+openssl-0.9.8za/ssl/d1_both.c:1269:3: Assignment of unsigned long int to int:
+    s->init_num = frag->msg_header.msg_len + header_length
+openssl-0.9.8za/ssl/d1_both.c:1298:26:
+    Test expression for conditional not boolean, type unsigned int:
+    frag->msg_header.is_ccs
+openssl-0.9.8za/ssl/d1_both.c:1302:2:
+    Implicitly only storage s->enc_write_ctx (type EVP_CIPHER_CTX *) not
+    released before assignment: s->enc_write_ctx = saved_state.enc_write_ctx
+   openssl-0.9.8za/ssl/d1_both.c:1276:2: Storage s->enc_write_ctx becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1303:2:
+    Implicitly only storage s->write_hash (type EVP_MD *) not released before
+    assignment: s->write_hash = saved_state.write_hash
+   openssl-0.9.8za/ssl/d1_both.c:1277:2: Storage s->write_hash becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1304:2:
+    Implicitly only storage s->compress (type COMP_CTX *) not released before
+    assignment: s->compress = saved_state.compress
+   openssl-0.9.8za/ssl/d1_both.c:1278:2: Storage s->compress becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1305:2:
+    Implicitly only storage s->session (type SSL_SESSION *) not released before
+    assignment: s->session = saved_state.session
+   openssl-0.9.8za/ssl/d1_both.c:1279:2: Storage s->session becomes kept
+openssl-0.9.8za/ssl/d1_both.c:1311:33:
+    Passed storage save_write_sequence not completely defined
+    (*save_write_sequence is undefined): memcpy (..., save_write_sequence, ...)
+openssl-0.9.8za/ssl/d1_both.c:1316:22:
+    New fresh storage (type BIO *) passed as implicitly temp (not released):
+    SSL_get_wbio(s)
+openssl-0.9.8za/ssl/d1_both.c:1316:43: Null storage passed as non-null param:
+                                          BIO_ctrl (..., NULL)
+openssl-0.9.8za/ssl/d1_both.c:1317:13:
+    Fresh storage item not released before return
+   openssl-0.9.8za/ssl/d1_both.c:1250:2: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c:1317:13:
+    Only storage seq64.d (type unsigned long int *) derived from variable
+    declared in this scope is not released (memory leak)
+openssl-0.9.8za/ssl/d1_both.c:1229:68: Parameter frag_off not used
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_clear_record_buffer)
+openssl-0.9.8za/ssl/d1_both.c:1327:17:
+    Fresh storage item (type pitem *) not released before assignment (in post
+    loop increment): item = pqueue_pop(s->d1->sent_messages)
+   openssl-0.9.8za/ssl/d1_both.c:1326:6: Fresh storage item created
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_set_message_header)
+openssl-0.9.8za/ssl/d1_both.c:1340:24:
+    Operand of ! is non-boolean (unsigned int): !s->d1->listen
+openssl-0.9.8za/ssl/d1_both.c:1349:9:
+    Implicitly temp storage p returned as implicitly only: p += 12
+  Temp storage (associated with a formal parameter) is transferred to a
+  non-temporary reference. The storage may be released or new aliases created.
+  (Use -temptrans to inhibit warning)
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_write_message_header)
+openssl-0.9.8za/ssl/d1_both.c:1390:9:
+    Implicitly temp storage p returned as implicitly only: p
+openssl-0.9.8za/ssl/d1_both.c: (in function dtls1_get_message_header)
+openssl-0.9.8za/ssl/d1_both.c:1422:5:
+    Assignment of unsigned int to unsigned short int:
+    msg_hdr->seq = (((unsigned int)(data[0])) << 8) | (((unsigned
+    int)(data[1])))
+
