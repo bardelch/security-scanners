@@ -1,4 +1,5 @@
 test/stack.c
+graudit/graudit
 ===========================================================
                                       .___ __  __   
           _________________  __ __  __| _/|__|/  |_ 
@@ -23,6 +24,7 @@ test/stack.c
 [35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K37[m[K[36m[K-[m[K    bof(str);
 [35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K38[m[K[36m[K:[m[K    [01;31m[Kprintf([m[K"Returned Properly\n");
 [35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K39[m[K[36m[K-[m[K    return 1;
+flawfinder
 Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
 Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
 Examining test/stack.c
@@ -57,7 +59,7 @@ test/stack.c:35:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 5
-Lines analyzed = 40 in approximately 0.01 seconds (4348 lines/second)
+Lines analyzed = 40 in approximately 0.01 seconds (3135 lines/second)
 Physical Source Lines of Code (SLOC) = 23
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   1 [5]   0
 Hits@level+ = [0+]   7 [1+]   5 [2+]   5 [3+]   1 [4+]   1 [5+]   0
@@ -67,6 +69,9 @@ Not every hit is necessarily a security vulnerability.
 There may be other security vulnerabilities; review your code!
 See 'Secure Programming HOWTO'
 (https://dwheeler.com/secure-programs) for more information.
+splint
+Splint 3.1.2 --- 16 Nov 2020
+
 test/stack.c: (in function main)
 test/stack.c:36:35: Possibly null storage badfile passed as non-null param:
                        fread (..., badfile)
@@ -91,7 +96,9 @@ test/stack.c:16:5: Function exported but not used outside stack: bof
   use static qualifier. (Use -exportlocal to inhibit warning)
    test/stack.c:24:1: Definition of bof
 
+Finished checking --- 6 code warnings
 test/stack-mod.c
+graudit/graudit
 ===========================================================
                                       .___ __  __   
           _________________  __ __  __| _/|__|/  |_ 
@@ -112,6 +119,7 @@ test/stack-mod.c
 [35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K40[m[K[36m[K-[m[K    bof(str);
 [35m[Ktest/stack-mod.c[m[K[36m[K:[m[K[32m[K41[m[K[36m[K:[m[K    [01;31m[Kprintf([m[K"Returned Properly\n");
 [35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K42[m[K[36m[K-[m[K    return 1;
+flawfinder
 Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
 Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
 Examining test/stack-mod.c
@@ -142,7 +150,7 @@ test/stack-mod.c:38:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 4
-Lines analyzed = 43 in approximately 0.01 seconds (5311 lines/second)
+Lines analyzed = 43 in approximately 0.01 seconds (3400 lines/second)
 Physical Source Lines of Code (SLOC) = 25
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   0 [5]   0
 Hits@level+ = [0+]   6 [1+]   4 [2+]   4 [3+]   0 [4+]   0 [5+]   0
@@ -152,6 +160,14 @@ Not every hit is necessarily a security vulnerability.
 There may be other security vulnerabilities; review your code!
 See 'Secure Programming HOWTO'
 (https://dwheeler.com/secure-programs) for more information.
+splint
+Splint 3.1.2 --- 16 Nov 2020
+
+test/stack-mod.c:22:17: Parse Error. (For help on parse errors, see splint
+               -help parseerrors.)
+*** Cannot continue.
+openssl-0.9.8za/ssl/d1_both.c
+graudit/graudit
 ===========================================================
                                       .___ __  __   
           _________________  __ __  __| _/|__|/  |_ 
@@ -269,6 +285,7 @@ See 'Secure Programming HOWTO'
 [35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1310[m[K[36m[K:[m[K		[01;31m[Kmemcpy(s->d1->last_write_sequence, s->s3->write_sequence, sizeof([m[Ks->s3->write_sequence));
 [35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K:[m[K[32m[K1311[m[K[36m[K:[m[K		[01;31m[Kmemcpy(s->s3->write_sequence, save_write_sequence, sizeof([m[Ks->s3->write_sequence));
 [35m[Kopenssl-0.9.8za/ssl/d1_both.c[m[K[36m[K-[m[K[32m[K1312[m[K[36m[K-[m[K	}
+flawfinder
 Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
 Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
 Examining openssl-0.9.8za/ssl/d1_both.c
@@ -329,7 +346,7 @@ openssl-0.9.8za/ssl/d1_both.c:1310:  [2] (buffer) memcpy:
 ANALYSIS SUMMARY:
 
 Hits = 14
-Lines analyzed = 1433 in approximately 0.04 seconds (38117 lines/second)
+Lines analyzed = 1433 in approximately 0.07 seconds (21073 lines/second)
 Physical Source Lines of Code (SLOC) = 971
 Hits@level = [0]  10 [1]   0 [2]  14 [3]   0 [4]   0 [5]   0
 Hits@level+ = [0+]  24 [1+]  14 [2+]  14 [3+]   0 [4+]   0 [5+]   0
@@ -339,6 +356,9 @@ Not every hit is necessarily a security vulnerability.
 There may be other security vulnerabilities; review your code!
 See 'Secure Programming HOWTO'
 (https://dwheeler.com/secure-programs) for more information.
+splint
+Splint 3.1.2 --- 16 Nov 2020
+
 openssl-0.9.8za/e_os.h:437: Include file <unistd.h> matches the name of a POSIX
     library, but the POSIX library is not being used.  Consider using +posixlib
     or +posixstrictlib to select the POSIX library, or -warnposix to suppress
@@ -1273,3 +1293,4 @@ openssl-0.9.8za/ssl/d1_both.c:1422:5:
     msg_hdr->seq = (((unsigned int)(data[0])) << 8) | (((unsigned
     int)(data[1])))
 
+Finished checking --- 307 code warnings
