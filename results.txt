@@ -57,7 +57,7 @@ test/stack.c:35:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 5
-Lines analyzed = 40 in approximately 0.01 seconds (4189 lines/second)
+Lines analyzed = 40 in approximately 0.01 seconds (4605 lines/second)
 Physical Source Lines of Code (SLOC) = 23
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   1 [5]   0
 Hits@level+ = [0+]   7 [1+]   5 [2+]   5 [3+]   1 [4+]   1 [5+]   0
@@ -67,6 +67,30 @@ Not every hit is necessarily a security vulnerability.
 There may be other security vulnerabilities; review your code!
 See 'Secure Programming HOWTO'
 (https://dwheeler.com/secure-programs) for more information.
+test/stack.c: (in function main)
+test/stack.c:36:35: Possibly null storage badfile passed as non-null param:
+                       fread (..., badfile)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+   test/stack.c:35:15: Storage badfile may become null
+test/stack.c:36:5: Return value (type size_t) ignored: fread(str, sizeo...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+test/stack.c:37:5: Return value (type int) ignored: bof(str)
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+test/stack.c:26:14: Parameter argc not used
+  A function parameter is not used in the body of the function. If the argument
+  is needed for type compatibility or future plans, use /*@unused@*/ in the
+  argument declaration. (Use -paramuse to inhibit warning)
+test/stack.c:26:27: Parameter argv not used
+test/stack.c:16:5: Function exported but not used outside stack: bof
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+   test/stack.c:24:1: Definition of bof
+
 test/stack-mod.c
 ===========================================================
                                       .___ __  __   
@@ -118,7 +142,7 @@ test/stack-mod.c:38:  [2] (misc) fopen:
 ANALYSIS SUMMARY:
 
 Hits = 4
-Lines analyzed = 43 in approximately 0.01 seconds (4751 lines/second)
+Lines analyzed = 43 in approximately 0.01 seconds (3457 lines/second)
 Physical Source Lines of Code (SLOC) = 25
 Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   0 [5]   0
 Hits@level+ = [0+]   6 [1+]   4 [2+]   4 [3+]   0 [4+]   0 [5+]   0
