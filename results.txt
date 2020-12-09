@@ -1,0 +1,130 @@
+test/stack.c
+===========================================================
+                                      .___ __  __   
+          _________________  __ __  __| _/|__|/  |_ 
+         / ___\_` __ \__  \ |  |  \/ __ | | \\_  __\
+        / /_/  >  | \// __ \|  |  / /_/ | |  ||  |  
+        \___  /|__|  (____  /____/\____ | |__||__|  
+       /_____/            \/           \/           
+              grep rough audit - static analysis tool
+                  v2.8 written by @Wireghoul
+=================================[justanotherhacker.com]===
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K20[m[K[36m[K-[m[K    /* The following statement has a buffer overflow problem */
+[35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K21[m[K[36m[K:[m[K    [01;31m[Kstrcpy[m[K(buffer, str);       
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K22[m[K[36m[K-[m[K
+[36m[K##############################################[m[K
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K30[m[K[36m[K-[m[K
+[35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K31[m[K[36m[K:[m[K     /* Change the size of the dummy array to [01;31m[Krandom[m[Kize the parameters
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K32[m[K[36m[K-[m[K       for this lab. Need to use the array at least once */
+[36m[K##############################################[m[K
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K34[m[K[36m[K-[m[K
+[35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K35[m[K[36m[K:[m[K    badfile = [01;31m[Kfopen[m[K("badfile", "r");
+[35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K36[m[K[36m[K:[m[K    [01;31m[Kfread[m[K(str, sizeof(char), 517, badfile);
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K37[m[K[36m[K-[m[K    bof(str);
+[35m[Ktest/stack.c[m[K[36m[K:[m[K[32m[K38[m[K[36m[K:[m[K    [01;31m[Kprintf([m[K"Returned Properly\n");
+[35m[Ktest/stack.c[m[K[36m[K-[m[K[32m[K39[m[K[36m[K-[m[K    return 1;
+Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
+Examining test/stack.c
+
+FINAL RESULTS:
+
+test/stack.c:21:  [4] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination [MS-banned]
+  (CWE-120). Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy
+  easily misused).
+test/stack.c:18:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack.c:28:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack.c:33:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack.c:35:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move things
+  around to create a race condition, control its ancestors, or change its
+  contents? (CWE-362).
+
+ANALYSIS SUMMARY:
+
+Hits = 5
+Lines analyzed = 40 in approximately 0.01 seconds (4189 lines/second)
+Physical Source Lines of Code (SLOC) = 23
+Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   1 [5]   0
+Hits@level+ = [0+]   7 [1+]   5 [2+]   5 [3+]   1 [4+]   1 [5+]   0
+Hits/KSLOC@level+ = [0+] 304.348 [1+] 217.391 [2+] 217.391 [3+] 43.4783 [4+] 43.4783 [5+]   0
+Minimum risk level = 1
+Not every hit is necessarily a security vulnerability.
+There may be other security vulnerabilities; review your code!
+See 'Secure Programming HOWTO'
+(https://dwheeler.com/secure-programs) for more information.
+test/stack-mod.c
+===========================================================
+                                      .___ __  __   
+          _________________  __ __  __| _/|__|/  |_ 
+         / ___\_` __ \__  \ |  |  \/ __ | | \\_  __\
+        / /_/  >  | \// __ \|  |  / /_/ | |  ||  |  
+        \___  /|__|  (____  /____/\____ | |__||__|  
+       /_____/            \/           \/           
+              grep rough audit - static analysis tool
+                  v2.8 written by @Wireghoul
+=================================[justanotherhacker.com]===
+[35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K33[m[K[36m[K-[m[K
+[35m[Ktest/stack-mod.c[m[K[36m[K:[m[K[32m[K34[m[K[36m[K:[m[K     /* Change the size of the dummy array to [01;31m[Krandom[m[Kize the parameters
+[35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K35[m[K[36m[K-[m[K       for this lab. Need to use the array at least once */
+[36m[K##############################################[m[K
+[35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K37[m[K[36m[K-[m[K
+[35m[Ktest/stack-mod.c[m[K[36m[K:[m[K[32m[K38[m[K[36m[K:[m[K    badfile = [01;31m[Kfopen[m[K("badfile", "r");
+[35m[Ktest/stack-mod.c[m[K[36m[K:[m[K[32m[K39[m[K[36m[K:[m[K    [01;31m[Kfread[m[K(str, sizeof(char), 517, badfile);
+[35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K40[m[K[36m[K-[m[K    bof(str);
+[35m[Ktest/stack-mod.c[m[K[36m[K:[m[K[32m[K41[m[K[36m[K:[m[K    [01;31m[Kprintf([m[K"Returned Properly\n");
+[35m[Ktest/stack-mod.c[m[K[36m[K-[m[K[32m[K42[m[K[36m[K-[m[K    return 1;
+Flawfinder version 2.0.11, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 223
+Examining test/stack-mod.c
+
+FINAL RESULTS:
+
+test/stack-mod.c:18:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack-mod.c:31:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack-mod.c:36:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119!/CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+test/stack-mod.c:38:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move things
+  around to create a race condition, control its ancestors, or change its
+  contents? (CWE-362).
+
+ANALYSIS SUMMARY:
+
+Hits = 4
+Lines analyzed = 43 in approximately 0.01 seconds (4751 lines/second)
+Physical Source Lines of Code (SLOC) = 25
+Hits@level = [0]   2 [1]   0 [2]   4 [3]   0 [4]   0 [5]   0
+Hits@level+ = [0+]   6 [1+]   4 [2+]   4 [3+]   0 [4+]   0 [5+]   0
+Hits/KSLOC@level+ = [0+] 240 [1+] 160 [2+] 160 [3+]   0 [4+]   0 [5+]   0
+Minimum risk level = 1
+Not every hit is necessarily a security vulnerability.
+There may be other security vulnerabilities; review your code!
+See 'Secure Programming HOWTO'
+(https://dwheeler.com/secure-programs) for more information.
